@@ -1,7 +1,8 @@
-Tis
-===
+# Tis
 
-[**Play Tis here**, with the source code in the background.](http://ttencate.github.io/tis)
+Oryginaly projekt autorstwa Thomasa Ten Cate znajdziesz [tutaj](https://github.com/ttencate/tis). Ja go tylko przełożyłem na język polski. Dalsze tłumaczenie README już wkrótce.
+
+[**Play Tis here**, with the source code in the background.](https://maciejpedzich.github.io/tis-pl)
 
 Tis is a self-contained Tetris® clone in 4 kB of pure JavaScript (ECMAScript
 5). This includes code to generate the necessary HTML markup and inline CSS.
@@ -9,8 +10,7 @@ Tis is a self-contained Tetris® clone in 4 kB of pure JavaScript (ECMAScript
 Tis can be embedded into any web page by simply adding a `<script>` tag. It can
 then be invoked as an easter egg using the Konami code.
 
-Features
---------
+## Features
 
 Tis has nearly all of the features you might expect from a modern Tetris:
 
@@ -30,15 +30,13 @@ Tis has nearly all of the features you might expect from a modern Tetris:
 - Sound effects.
 - Music with two treble voices and a bass voice.
 
-Missing features
-----------------
+## Missing features
 
 - Points for T-spins and split line clears.
 - A hold area.
 - Multiple look-ahead.
 
-Deploying
----------
+## Deploying
 
 Simply grab `tis.min.js` from this repository, put it on your webserver
 somewhere, and put the following just before the `</body>` tag in your HTML:
@@ -48,8 +46,7 @@ somewhere, and put the following just before the `</body>` tag in your HTML:
 Visitors of your web page will now get a nice surprise when they type the
 [Konami code](https://en.wikipedia.org/wiki/Konami_Code).
 
-Implementation notes
---------------------
+## Implementation notes
 
 To keep the code at least somewhat sane, it relies on
 [UglifyJS](https://github.com/mishoo/UglifyJS) for variable renaming, brace

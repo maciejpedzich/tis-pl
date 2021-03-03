@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tis demo</title>
+    <title>Tis PL</title>
     <style>
       html {
         font-family: sans-serif;
       }
-      h1, p {
+      h1,
+      p {
         text-align: center;
       }
       pre {
@@ -24,27 +25,37 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
   </head>
   <body>
-    <h1>Tis demo</h1>
+    <h1>Demo Tis PL</h1>
     <p>
-      <a href="http://github.com/ttencate/tis">Tis on GitHub</a>
+      <a href="http://github.com/ttencate/tis">Tis PL na GitHubie</a>
     </p>
-    <p>
-      Size: <span id="size"></span> (<span id="delta"></span>)
-    </p>
+    <p>Rozmiar: <span id="size"></span> (<span id="delta"></span>)</p>
     <pre id="code"></pre>
-    <p>If you quit Tis, type the <a href="https://en.wikipedia.org/wiki/Konami_Code">Konami code</a> to get it back.</p>
+    <p>
+      Jeśli zakończysz grę, wprowadź
+      <a href="https://pl.wikipedia.org/wiki/Konami_Code">kod Konami</a>, aby
+      rozpocząć ją ponownie.
+    </p>
     <script>
-      $.get('tis.min.js', function(code, textStatus, xhr) {
-        // These are actually characters, not bytes. But we don't use any Unicode.
-        var size = code.length;
-        var target = 4096;
-        $('#size').text(size);
-        $('#delta').text(
-            Math.abs(size - target) + ' bytes ' +
-            (size > target ? 'over' : 'under') + ' target')
+      $.get(
+        '/tis.min.js',
+        function (code, textStatus, xhr) {
+          // These are actually characters, not bytes. But we don't use any Unicode.
+          let size = code.length;
+          let target = 4096;
+          $('#size').text(size + ' B ');
+          $('#delta')
+            .text(
+              Math.abs(size - target) +
+                ' B ' +
+                (size > target ? 'więcej' : 'mniej') +
+                ' niż 4 kB'
+            )
             .css('color', size > target ? '#800' : '#080');
-        $('#code').text(code);
-      }, 'text');
+          $('#code').text(code);
+        },
+        'text'
+      );
     </script>
     <script src="tis.js"></script>
     <script>

@@ -129,7 +129,7 @@
             '-14pc -10pc;position:fixed;width:20pc;left:50%;top:50%;font:12px Arial;background:rgba(0,0,0,.8);box-shadow:0 0 2pc #000;border-radius:1pc">' +
             divStyleMargin +
             '1pc 2pc;color:#888">' +
-            '<b><a href="http://github.com/maciejpedzich/tis-pl" style="color:inherit">Tis</a></b>: Klon tetrisa w 4 kB kodu JavaScript<br><br>' +
+            '<b><a href="https://github.com/maciejpedzich/tis-pl" style="color:inherit">Tis PL</a></b>: spolszczony klon Tetrisa w 4 kB kodu JavaScript<br><br>' +
             'Lewo/Prawo: Rusz blokiem | Góra/Ctrl/Alt: Obróć | Esc: Wyjdź<br>' +
             'Dół/Spacja: Przyspiesz/Upuść | M: Włącz/Wyłącz muzykę' +
             divEnd +

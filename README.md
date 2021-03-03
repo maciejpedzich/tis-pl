@@ -1,4 +1,4 @@
-# Tis
+# Tis PL
 
 Oryginaly projekt autorstwa Thomasa Ten Cate znajdziesz [tutaj](https://github.com/ttencate/tis). Ja go tylko przełożyłem na język polski. Dalsze tłumaczenie README już wkrótce.
 

@@ -2,103 +2,82 @@
 
 Oryginaly projekt autorstwa Thomasa Ten Cate znajdziesz [tutaj](https://github.com/ttencate/tis). Ja go tylko przełożyłem na język polski. Dalsze tłumaczenie README już wkrótce.
 
-[**Play Tis here**, with the source code in the background.](https://maciejpedzich.github.io/tis-pl)
+[**Wypróbuj demo Tis PL** z kodem źródłowym w tle.](https://maciejpedzich.github.io/tis-pl)
 
-Tis is a self-contained Tetris® clone in 4 kB of pure JavaScript (ECMAScript
-5). This includes code to generate the necessary HTML markup and inline CSS.
+Tis PL to spolszczony, _samowystarczalny_ klon gry Tetris® w niecałych 4 kB czystego kodu JavaScript (ECMAScript 5), włącznie z generowaniem niezbędnych znaczników HTML oraz styli CSS.
 
-Tis can be embedded into any web page by simply adding a `<script>` tag. It can
-then be invoked as an easter egg using the Konami code.
+Tis PL może być dołączony do każdej strony internetowej poprzez dodanie znacznika `<script>`. Można go aktywować jako tzw. easter egga, wprowadzając kod Konami.
 
-## Features
+## Funkcje
 
-Tis has nearly all of the features you might expect from a modern Tetris:
+Tis posiada niemal wszystkie funkcje, których możesz się spodziewać po nowoczesnym Tetrisie:
 
-- All seven tetromino shapes.
-- Block movement and rotation.
-- Key repeats.
-- Soft and hard drop.
-- Ghost piece.
-- Lock delay.
-- Bag-of-seven random generator.
-- Animated line clearing.
-- Look-ahead to the upcoming block.
-- Wall kicks.
-- Infinite levels, with corresponding speed increase.
-- Score, depending on level and number of lines cleared at once.
-- Animated game-over screen.
-- Sound effects.
-- Music with two treble voices and a bass voice.
+- Wszystkie siedem kształtów tetromino.
+- Możliwość ich poruszania oraz obracania.
+- Powtarzanie klawiszy.
+- Przyspieszanie i upuszczanie bloków.
+- _Blok duch_, czyli podgląd miejsca tetromino.
+- Opóźnienie zablokowania pozycji bloku.
+- Losowy wybór kolejnych bloków.
+- Animacja usunięcia linii.
+- Podgląd następnego tetromino.
+- Nieskończona liczba poziomów, im wyższy poziom tym bloki spadają szybciej.
+- Wynik zależny od obecnego poziomu oraz liczby usuniętych linii.
+- Animowany ekran końca gry.
+- Efekty dźwiękowe.
+- Muzyka z sopranem i basem.
 
-## Missing features
+## Brakujące funkcje
 
-- Points for T-spins and split line clears.
-- A hold area.
-- Multiple look-ahead.
+- Przyznawanie punktów za tzw. _T-spiny_ oraz usuwanie linii odzdzielonych przez inną linię.
+- Miejsce na tetromino _na później_.
+- Podgląd kilku kolejnych bloków jednocześnie.
 
-## Deploying
+## Stosowanie
 
-Simply grab `tis.min.js` from this repository, put it on your webserver
-somewhere, and put the following just before the `</body>` tag in your HTML:
+Po prostu pobierz `tis.min.js` z tego repozytorium, umieść plik gdziekolwiek chcesz na serwerze i wstaw poniższe przed znacznikiem `</body>` w kodzie HTML:
 
-    <script src="/path/to/tis.min.js"></script>
+    <script src="/sciezka/do/tis.min.js"></script>
 
-Visitors of your web page will now get a nice surprise when they type the
-[Konami code](https://en.wikipedia.org/wiki/Konami_Code).
+Teraz, odwiedzający stronę otrzymają miłą niespodziankę po wprowadzeniu [kodu Konami](https://pl.wikipedia.org/wiki/Konami_Code).
 
-## Implementation notes
+## Uwagi odnośnie implementacji
 
 To keep the code at least somewhat sane, it relies on
 [UglifyJS](https://github.com/mishoo/UglifyJS) for variable renaming, brace
-removal and more such niceties. However, there was still plenty to be done by
-hand. This section describes some of the tricks used.
+removal and more such niceties. However, there was still plenty to be done by hand. This section describes some of the tricks used.
+
+Aby kod był w miarę _rozsądny_, musi polegać na [UglifyJS](https://github.com/mishoo/UglifyJS) w celu nadawania nowych nazw zmiennym, usuwania klamr i innych niuansów. Mimo to, wiele rzeczy należało napisać własnoręcznie. W tej sekcji opisano wszystkie wykorzystane w projekcie sztuczki.
 
 ### HTML/CSS
 
-- Extracting common parts of HTML and CSS into strings, for example the string
+- Wyodrębnianie wspólnych części kodu HTML i CSS do łańcuchów, na przykład:
   `'<div style="margin:'`.
-- Using `pc` instead of `px` in the CSS; one pica is 16 pixels.
+- Używanie `pc` zamiast `px` w stylach CSS; 1 pica odpowiada 16 pikselom.
 
-### Game data
+### Dane gry
 
-- The music is encoded as a string of characters, where each character
-  represents both the pitch and the duration of a single note.
-- The tetromino shapes in their respective orientations are encoded as
-  bitmasks, but because we can't efficiently encode bytes above 127 in UTF-8,
-  they are encoded in base-64 instead.
-- Wall kick tables are encoded as a string, where each character encodes a
-  single x and y offset.
-- Tetromino colours are encoded in a single string of `#fff`-style hex values
-  (without the `#` of course), separated by the character `9`. We use a digit
-  because it doesn't require quotes when passing to `Array.split()`.
-- Sound effects are encoded as a single number, packing a few bits for decay
-  speed, a few for initial frequency, and a few more for another frequency that
-  kicks in after 1000 (`1e3`) samples.
+- Muzyka została zakodowana jako łańcuch znaków, gdzie każdy znak reprezentuje zarówno tonację, jak i czas odgrywania nuty
+- Kształty tetromino w poszczególnych obrotach przedstawiono w postaci mask bitowych, ale ponieważ nie da się w sposób efektywny zakodować bajtów powyżej 127 w UTF-8, zakodowano je w Base64.
+- Tabele kolizji bloku ze ścianą zakodowano jako łańcuchy, gdzie każdy znak odpowiada pojedyńczemu przesunięciu wzdłuż osi x oraz y.
+- Kolory tetromino również przedstawiono w postaci łańcuchów w stylu `#fff`
+  (oczyiście bez `#`), oddzielonych znakiem `9`. Korzystamy z cyfry,
+  ponieważ nie musimy jej wtedy otaczać cudzysłowami w metodzie `Array.split()`.
+- Efekty dźwiękowe zakodowano jako pojedyńcze liczby, przeznaczając kilka bitów dla szybkości zanikania, kilka kolejnych dla pierwotnej częstotliwości, a pozostałe przeznaczono na częstotliwość po odtworzeniu 1000 (`1e3`) próbek.
 
 ### JavaScript
 
-- Names of global objects (`window`, `document`) and of frequently used
-  fields/methods are stored in variables to make access shorter.
-- Instead of `document.getElementById(...)`, use the fact that element IDs are
-  also registered on the `window` object: `window[...]`.
-- Because `var` declarations are costly, do them only once at the top-level
-  scope, and reuse variables as much as possible. This does make it difficult
-  to safely invoke functions.
-- Inline as many functions as possible, because `function` is an awfully long
-  word that cannot be shortened.
-- Let `undefined` be the desired initial value of variables as much as
-  possible, so we don't need to initialize them.
-- Be aware of the `for(i in a)` syntax as an alternative to `for(i=0;i<n;i++)`.
-  However, this isn't always shorter, because the traditional `for` loop lets
-  you put more stuff inside the initialization, condition and increment part.
-- Put assignments inside expressions where possible: instead of `x++;y=2*x`
-  write `y=2*x++`.
-- Instead of `x>=0&&x<4`, write `!(x&~3)`. This works even if `x` is negative.
-- Use `~~(a+b)` instead of `Math.floor(a+b)` to cast to integer. `0|(a+b)` also
-  works.
-- For somewhat arbitrary constants, `9` is better than `10`, `99` better than
+- Nazwy globalnych obiektów (takich jak `window`, `document`) oraz często wykorzystywanych daych/metod przechowywane są w zmiennych dla krótszego dostępu.
+- Zamiast `document.getElementById(...)`, korzysta się z faktu, że elementy są z przypisanym id są zarejestrowane w obiekcie `window`, a elementy te odczytujemy poprzez `window[...]`.
+- Ponieważ deklaracje zmiennych są kosztowne, należy je wykonywać w zasięgu globalnym i wykorzystywać je ponownie tyle razy, ile to możliwe. Utrudnia to bezpieczną inwokację funkcji.
+- Należy zastępować wywołania funkcji jej ciałem, ponieważ słowo `function` jest okropnie długie.
+- Niech `undefined` będzie pożądaną pierwotną wartością każdej możliwej zmienniej, w celu uniknięcia konieczności ich inicjalizacji.
+- Trzeba mieć świadomość, że zapis `for(i in a)` stanowi alternatywę dla `for(i=0;i<n;i++)`. Jednakże nie jest to zawsze zapis krótszy, bo tradycyjna pętla `for` pozwala na umieszczenie warunku wykonywania instrukcji oraz wyrażenie zwiększenia/zmniejszenia wartości zmiennej
+- Umieszczaj przyporządkowania wartości wewnątrz wyrażeń gdziekolwiek to możliwe: zamiast `x++;y=2*x`,
+  pisz `y=2*x++`.
+- `x>=0&&x<4` możesz zastąpić `!(x&~3)`. Działa to nawet wtedy, gdy `x` jest ujemne.
+- Korzystaj z `~~(a+b)` zamiast `Math.floor(a+b)` aby otrzymać liczbę całkowitą. `0|(a+b)` również zadziała.
+- Dla arbitralnych stałych, `9` jest lepsze niż `10`, a `99` lepsze niż
   `100`.
-- `switch`/`case` is extremely verbose, especially if you need `break` (i.e.
-  almost always). Just use `if`/`else if` instead.
-- There is even one `goto`-like label, to `break` out of two `for` loops at the
-  same time. This is the only thing labels in JavaScript can be used for.
+- `switch`/`case` jest strasznie rozwlekłe, szczególnie kiedy potrzebujesz `break` (czyli praktycznie zawsze). Po prostu używaj zamiast tego `if`/`else if`.
+- Istnieje również etykieta (label) działający jak `goto`, aby przerwać dwie pętle jednocześnie `break` out of two `for`. To chyba jedyne sensowne zastosowanie etykiet w języku JavaScript.

@@ -4,7 +4,7 @@ Oryginaly projekt autorstwa Thomasa Ten Cate znajdziesz [tutaj](https://github.c
 
 [**Wypróbuj demo Tis PL** z kodem źródłowym w tle.](https://maciejpedzich.github.io/tis-pl)
 
-Tis PL to spolszczony, _samowystarczalny_ klon gry Tetris® w niecałych 4 kB czystego kodu JavaScript (ECMAScript 5), włącznie z generowaniem niezbędnych znaczników HTML oraz styli CSS.
+Tis PL to spolszczony, _samowystarczalny_ (tj. bez bibliotek) klon gry Tetris® w niecałych 4 kB czystego kodu JavaScript (ECMAScript 5), włącznie z generowaniem niezbędnych znaczników HTML oraz styli CSS.
 
 Tis PL może być dołączony do każdej strony internetowej poprzez dodanie znacznika `<script>`. Można go aktywować jako tzw. easter egga, wprowadzając kod Konami.
 
@@ -43,10 +43,6 @@ Teraz, odwiedzający stronę otrzymają miłą niespodziankę po wprowadzeniu [k
 
 ## Uwagi odnośnie implementacji
 
-To keep the code at least somewhat sane, it relies on
-[UglifyJS](https://github.com/mishoo/UglifyJS) for variable renaming, brace
-removal and more such niceties. However, there was still plenty to be done by hand. This section describes some of the tricks used.
-
 Aby kod był w miarę _rozsądny_, musi polegać na [UglifyJS](https://github.com/mishoo/UglifyJS) w celu nadawania nowych nazw zmiennym, usuwania klamr i innych niuansów. Mimo to, wiele rzeczy należało napisać własnoręcznie. W tej sekcji opisano wszystkie wykorzystane w projekcie sztuczki.
 
 ### HTML/CSS
@@ -80,4 +76,4 @@ Aby kod był w miarę _rozsądny_, musi polegać na [UglifyJS](https://github.co
 - Dla arbitralnych stałych, `9` jest lepsze niż `10`, a `99` lepsze niż
   `100`.
 - `switch`/`case` jest strasznie rozwlekłe, szczególnie kiedy potrzebujesz `break` (czyli praktycznie zawsze). Po prostu używaj zamiast tego `if`/`else if`.
-- Istnieje również etykieta (label) działający jak `goto`, aby przerwać dwie pętle jednocześnie `break` out of two `for`. To chyba jedyne sensowne zastosowanie etykiet w języku JavaScript.
+- Istnieje również etykieta (label) działający jak `goto`, aby przerwać dwie pętle `for` jednocześnie. To chyba jedyne sensowne zastosowanie etykiet w języku JavaScript.

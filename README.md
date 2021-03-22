@@ -61,7 +61,7 @@ Aby kod był w miarę _rozsądny_, musi polegać na [UglifyJS](https://github.co
 - Kształty tetromino w poszczególnych obrotach przedstawiono w postaci mask bitowych, ale ponieważ nie da się w sposób efektywny zakodować bajtów powyżej 127 w UTF-8, zakodowano je w Base64.
 - Tabele kolizji bloku ze ścianą zakodowano jako łańcuchy, gdzie każdy znak odpowiada pojedyńczemu przesunięciu wzdłuż osi x oraz y.
 - Kolory tetromino również przedstawiono w postaci łańcuchów w stylu `#fff`
-  (oczyiście bez `#`), oddzielonych znakiem `9`. Korzystamy z cyfry,
+  (oczywiście bez `#`), oddzielonych znakiem `9`. Korzystamy z cyfry,
   ponieważ nie musimy jej wtedy otaczać cudzysłowami w metodzie `Array.split()`.
 - Efekty dźwiękowe zakodowano jako pojedyńcze liczby, przeznaczając kilka bitów dla szybkości zanikania, kilka kolejnych dla pierwotnej częstotliwości, a pozostałe przeznaczono na częstotliwość po odtworzeniu 1000 (`1e3`) próbek.
 

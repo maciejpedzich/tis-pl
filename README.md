@@ -1,6 +1,6 @@
 # Tis PL
 
-Oryginaly projekt autorstwa Thomasa Ten Cate znajdziesz [tutaj](https://github.com/ttencate/tis). Ja go tylko przełożyłem na język polski. Dalsze tłumaczenie README już wkrótce.
+Oryginaly projekt autorstwa Thomasa Ten Cate znajdziesz [tutaj](https://github.com/ttencate/tis). Ja go tylko przełożyłem na język polski.
 
 [**Wypróbuj demo Tis PL** z kodem źródłowym w tle.](https://maciejpedzich.github.io/tis-pl)
 
